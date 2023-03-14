@@ -15,4 +15,7 @@ class FilterMapExercise:
         :param input_array: Исходный список.
         :return: Отфильтрованный список.
         """
-        pass
+        map_iterator = map(func, input_array)
+        filtered_iterator = filter(lambda x: x[0], map_iterator)
+        resulted_iterator = map(lambda x: x[1], filtered_iterator)
+        return list(resulted_iterator)
