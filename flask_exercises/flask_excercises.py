@@ -34,7 +34,7 @@ class FlaskExercise:
     def configure_routes(app: Flask) -> None:
         @app.route("/user/<name>", methods=["GET"])
         def get(name: str) -> Any:
-            if name in users.keys():
+            if name in users:
                 response = jsonify({"data": f"My name is {name}"}), HTTPStatus.OK
                 return response
             return jsonify(HTTPStatus.NOT_FOUND), HTTPStatus.NOT_FOUND
@@ -55,7 +55,7 @@ class FlaskExercise:
         def patch(name: str) -> Any:
             body = request.json
             new_name = body["name"]
-            if name in users.keys():
+            if name in users:
                 users[new_name] = users.pop(name)
                 response = jsonify({"data": f"My name is {new_name}"}), HTTPStatus.OK
                 return response
@@ -63,7 +63,7 @@ class FlaskExercise:
 
         @app.route("/user/<name>", methods=["DELETE"])
         def delete(name: str) -> Any:
-            if name in users.keys():
+            if name in users:
                 users.pop(name)
                 response = f"{HTTPStatus.NO_CONTENT}", HTTPStatus.NO_CONTENT
                 return response
