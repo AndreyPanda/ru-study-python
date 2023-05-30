@@ -10,7 +10,7 @@ class TestMapExercise:
     @pytest.fixture
     def list_of_movies(self) -> list[dict]:
         print(os.getcwd())
-        with open("fixtures/movies.csv", "r") as movies:
+        with open("fixtures/movies.csv", "r", encoding="utf-8") as movies:
             list_of_movies = list(DictReader(movies))
         return list_of_movies
 
